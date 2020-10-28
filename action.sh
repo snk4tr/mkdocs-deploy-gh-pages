@@ -6,15 +6,6 @@ function print_info() {
     echo -e "\e[36mINFO: ${1}\e[m"
 }
 
-if [ -n "${REQUIREMENTS}" ] && [ -f "${GITHUB_WORKSPACE}/${REQUIREMENTS}" ]; then
-    pip3 install -r "${GITHUB_WORKSPACE}/${REQUIREMENTS}"
-else
-    REQUIREMENTS="${GITHUB_WORKSPACE}/requirements.txt"
-    if [ -f "${REQUIREMENTS}" ]; then
-        pip3 install -r "${REQUIREMENTS}"
-    fi
-fi
-
 if [ -n "${CUSTOM_DOMAIN}" ]; then
     print_info "Setting custom domain for github pages"
     echo "${CUSTOM_DOMAIN}" > "${GITHUB_WORKSPACE}/docs/CNAME"
